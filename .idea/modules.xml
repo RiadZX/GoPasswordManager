@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GoPaswordManager.iml" filepath="$PROJECT_DIR$/.idea/GoPaswordManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GoPasswordManager.iml" filepath="$PROJECT_DIR$/.idea/GoPasswordManager.iml" />
     </modules>
   </component>
 </project>
