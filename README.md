@@ -1,2 +1,2 @@
-# GoPaswordManager
+# GoPasswordManager
  
