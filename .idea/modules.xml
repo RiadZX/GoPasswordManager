@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/GolandProjects/AdvancedCalculator/.idea/AdvancedCalculator.iml" filepath="$USER_HOME$/GolandProjects/AdvancedCalculator/.idea/AdvancedCalculator.iml" />
+      <module fileurl="file://$USER_HOME$/GolandProjects/BasicCalculator/.idea/BasicCalculator.iml" filepath="$USER_HOME$/GolandProjects/BasicCalculator/.idea/BasicCalculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/GoPasswordManager.iml" filepath="$PROJECT_DIR$/.idea/GoPasswordManager.iml" />
     </modules>
   </component>
