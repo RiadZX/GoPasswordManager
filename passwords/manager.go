@@ -1,23 +1,10 @@
 package main
 
 type Entry struct {
-	email    Email
+	email    string
 	username string
-	password EncryptedPassword
+	password string
 	website  string
-	category Category
+	category string
 	note     string
-}
-
-type Email struct {
-}
-
-type EncryptedPassword struct {
-}
-
-type Category struct {
-}
-
-func main() {
-
 }
