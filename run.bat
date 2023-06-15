@@ -1,2 +1,2 @@
 @ECHO off
-.\build\go_build_GoPasswordManager.exe
+.\build\build.exe

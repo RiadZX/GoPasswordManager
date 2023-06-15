@@ -2,6 +2,7 @@ package main
 
 import (
 	"GoPasswordManager/helpers"
+	"GoPasswordManager/passwords"
 	"fmt"
 	"strings"
 )
@@ -16,21 +17,13 @@ var (
 )
 
 func printLogo() {
-	menutxt := getFileContent("./data/menu.txt")
-	data := getJsonContent("./data/data.json")
+	menutxt := helpers.GetFileContent("./data/menu.txt")
+	data := helpers.GetJsonContent("./data/data.json")
 	//print
 	fmt.Println(menutxt)
 	version := strings.Repeat(" ", 26) + data["version"].(string)
 	fmt.Println(version)
 
-}
-
-func getIntInput(l helpers.Logger) int {
-	fmt.Print(l.Prefix, ">>")
-	var o int
-	// Taking input from user
-	fmt.Scanln(&o)
-	return o
 }
 
 //func getNums() (float32, float32) {
@@ -46,15 +39,15 @@ func getIntInput(l helpers.Logger) int {
 //}
 
 func main() {
-	logger := helpers.Logger{1, "[GoPassword] | "}
-	
+	logger := helpers.Logger{Level: 1, Prefix: "[GoPassword] | "}
+
 	for true {
 		printLogo()
 		logger.LogList(OPTIONS)
-		option := getIntInput(logger)
+		option := helpers.GetIntInput()
 		switch option {
 		case 1:
-			logger.Log("Chosen 1")
+			passwords.AddEntry()
 		case 2:
 			logger.Log("Chosen 2")
 		case 3:

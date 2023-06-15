@@ -1,4 +1,4 @@
-package main
+package helpers
 
 import (
 	"encoding/json"
@@ -8,7 +8,7 @@ import (
 
 //normal files handler
 
-func getFileContent(filepath string) string {
+func GetFileContent(filepath string) string {
 	content, err := os.ReadFile(filepath)
 	if err != nil {
 		log.Fatal(err)
@@ -17,7 +17,7 @@ func getFileContent(filepath string) string {
 	return string(content)
 }
 
-func getJsonContent(filepath string) map[string]interface{} {
+func GetJsonContent(filepath string) map[string]interface{} {
 	content, err := os.ReadFile(filepath)
 	if err != nil {
 		log.Fatal(err)
@@ -30,4 +30,9 @@ func getJsonContent(filepath string) map[string]interface{} {
 	}
 
 	return result
+}
+
+func SavePassword(entry string) {
+	logger := Logger{Level: 1, Prefix: "[GoPassword] | "}
+	logger.Log("Saved Password")
 }
