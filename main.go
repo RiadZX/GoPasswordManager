@@ -47,7 +47,8 @@ func main() {
 		option := helpers.GetIntInput()
 		switch option {
 		case 1:
-			passwords.AddEntry()
+			entry := passwords.AddEntry()
+			helpers.SavePassword(entry)
 		case 2:
 			logger.Log("Chosen 2")
 		case 3:

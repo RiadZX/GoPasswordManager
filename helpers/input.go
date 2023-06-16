@@ -12,8 +12,8 @@ func GetIntInput() int {
 	return o
 }
 
-func GetStrInput() string {
-	fmt.Print(">>")
+func GetStrInput(message string) string {
+	fmt.Print(">> ", message)
 	var o string
 	// Taking input from user
 	fmt.Scanln(&o)

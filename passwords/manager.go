@@ -2,29 +2,20 @@ package passwords
 
 import "GoPasswordManager/helpers"
 
-type Entry struct {
-	email    string
-	username string
-	password string
-	website  string
-	category string
-	note     string
-}
-
-func AddEntry() {
+func AddEntry() helpers.Entry {
 	println("STARTING ADDING")
-	email := helpers.GetStrInput()
-	username := helpers.GetStrInput()
-	password := helpers.GetStrInput()
+	email := helpers.GetStrInput("Email: ")
+	username := helpers.GetStrInput("Username: ")
+	password := helpers.GetStrInput("Password: ")
 	println(email, username, password, "Saved")
-	//entry := Entry{
-	//	email:    email,
-	//	username: username,
-	//	password: password,
-	//	website:  "",
-	//	category: "",
-	//	note:     "",
-	//}
+	entry := helpers.Entry{
+		Email:    email,
+		Username: username,
+		Password: password,
+		Website:  "",
+		Category: "",
+		Note:     "",
+	}
 
-	helpers.SavePassword("Saved")
+	return entry
 }
