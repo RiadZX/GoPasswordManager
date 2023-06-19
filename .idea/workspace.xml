@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc6441c1-1008-49b7-8d37-06090015a66d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/helpers/types.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/passwords.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/build_and_run.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/build_and_run.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/filehandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/filehandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/input.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/input.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/logger.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/types.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passwords.json" beforeDir="false" afterPath="$PROJECT_DIR$/passwords.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passwords/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/passwords/manager.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,16 +118,5 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/helpers/types.go</url>
-          <line>6</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

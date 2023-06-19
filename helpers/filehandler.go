@@ -2,51 +2,36 @@ package helpers
 
 import (
 	"encoding/json"
-	"log"
+	"fmt"
+	"io/ioutil"
 	"os"
 )
 
-//normal files handler
+func loadJson(filepath string) []Entry {
+	jsonFile, err := os.Open(filepath)
+	defer jsonFile.Close()
 
-func GetFileContent(filepath string) string {
-	content, err := os.ReadFile(filepath)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 	}
 
-	return string(content)
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+	var entries []Entry
+	json.Unmarshal(byteValue, &entries)
+
+	return entries
 }
 
-func writeStringToFile(filepath string, content string) {
-	file, err := os.OpenFile(filepath, os.O_RDWR|os.O_CREATE, 0755)
-	_, err = file.WriteString(content)
-	if err != nil {
-		return
-	}
-	err2 := file.Close()
-	if err2 != nil {
-		return
-	}
-}
+func saveEntries(entries []Entry) {
+	file, _ := json.MarshalIndent(entries, "", " ")
 
-func GetJsonContent(filepath string) map[string]interface{} {
-	content, err := os.ReadFile(filepath)
-	if err != nil {
-		log.Fatal(err)
-	}
-	var result map[string]interface{}
-
-	err_ := json.Unmarshal([]byte(content), &result)
-	if err_ != nil {
-		return nil
-	}
-
-	return result
+	_ = os.WriteFile("./passwords.json", file, 0644)
 }
 
 func SavePassword(entry Entry) {
-	logger := Logger{Level: 1, Prefix: "[GoPassword] | "}
+	logger := Logger{Level: 1, Prefix: ""}
 	logger.Log("Saved Password")
-	currentFileContent := GetFileContent("passwords.json")
-	writeStringToFile("./passwords.json", currentFileContent+"dcccc")
+	var currentEntries []Entry = loadJson("./passwords.json")
+	entries := append(currentEntries, entry)
+	saveEntries(entries)
 }
