@@ -30,7 +30,5 @@ func main() {
 		case 4:
 			logger.Log("Chosen 4")
 		}
-
-		logger.Log("X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X")
 	}
 }
