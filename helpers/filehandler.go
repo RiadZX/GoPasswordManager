@@ -3,21 +3,29 @@ package helpers
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
 )
 
-func loadJson(filepath string) []Entry {
+func LoadEntries(filepath string) []Entry {
 	jsonFile, err := os.Open(filepath)
-	defer jsonFile.Close()
+	defer func(jsonFile *os.File) {
+		err := jsonFile.Close()
+		if err != nil {
+
+		}
+	}(jsonFile)
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	byteValue, _ := io.ReadAll(jsonFile)
 	var entries []Entry
-	json.Unmarshal(byteValue, &entries)
+	err1 := json.Unmarshal(byteValue, &entries)
+	if err1 != nil {
+		return nil
+	}
 
 	return entries
 }
@@ -28,10 +36,17 @@ func saveEntries(entries []Entry) {
 	_ = os.WriteFile("./passwords.json", file, 0644)
 }
 
-func SavePassword(entry Entry) {
+func SaveEntry(entry Entry) {
 	logger := Logger{Level: 1, Prefix: ""}
 	logger.Log("Saved Password")
-	var currentEntries []Entry = loadJson("./passwords.json")
+	var currentEntries []Entry = LoadEntries("./passwords.json")
 	entries := append(currentEntries, entry)
+	saveEntries(entries)
+}
+
+func SaveEntries(entries []Entry) {
+	logger := Logger{Level: 1, Prefix: ""}
+	logger.Log("Saved Password")
+
 	saveEntries(entries)
 }

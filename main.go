@@ -22,10 +22,14 @@ func main() {
 		switch option {
 		case 1:
 			entry := passwords.AddEntry()
-			helpers.SavePassword(entry)
+			helpers.SaveEntry(entry)
+			logger.Log("Added Password Success")
 		case 2:
-			logger.Log("Chosen 2")
+			passwords.ViewEntries()
+			entries := passwords.DeleteEntry(helpers.LoadEntries("./passwords.json"))
+			helpers.SaveEntries(entries)
 		case 3:
+			passwords.ViewEntries()
 			logger.Log("Chosen 3")
 		case 4:
 			logger.Log("Chosen 4")
