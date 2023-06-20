@@ -6,31 +6,55 @@ import (
 	"fmt"
 )
 
-func AddEntry() helpers.Entry {
+func AddEntry(masterPassword string) helpers.Entry {
 	println("STARTING ADDING")
-	email := helpers.GetStrInput("Email: ")
+	email, _ := EncryptPassword(helpers.GetStrInput("Email: "), masterPassword)
+	username, _ := EncryptPassword(helpers.GetStrInput("Username: "), masterPassword)
+	password, _ := EncryptPassword(helpers.GetStrInput("Password: "), masterPassword)
+	website, _ := EncryptPassword(helpers.GetStrInput("Website: "), masterPassword)
+	category, _ := EncryptPassword(helpers.GetStrInput("Category: "), masterPassword)
+	notes, _ := EncryptPassword(helpers.GetStrInput("Note: "), masterPassword)
 
 	entry := helpers.Entry{
 		Email:    email,
-		Username: "username",
-		Password: "password",
-		Website:  "c",
-		Category: "c",
-		Note:     "c",
+		Username: username,
+		Password: password,
+		Website:  website,
+		Category: category,
+		Note:     notes,
 	}
 
 	return entry
 }
 
-func ViewEntries() error {
+func ViewEntries(masterPassword string) ([]helpers.Entry, error) {
 	var entries = helpers.LoadEntries("./passwords.json")
 	if len(entries) == 0 {
-		return errors.New("no entries found")
+		fmt.Println("No entries found")
+		entries := []helpers.Entry{helpers.Entry{}}
+		return entries, errors.New("no entries found")
 	}
 	for i, v := range entries {
-		fmt.Println(i, v.Website, v.Username)
+		decryptedemail, _ := DecryptPassword(v.Email, masterPassword)
+		fmt.Println(i, "Entry: ", decryptedemail)
 	}
-	return nil
+	return entries, nil
+}
+
+func ViewEntry(entry helpers.Entry, masterPassword string) {
+	email, _ := DecryptPassword(entry.Email, masterPassword)
+	username, _ := DecryptPassword(entry.Username, masterPassword)
+	password, _ := DecryptPassword(entry.Password, masterPassword)
+	website, _ := DecryptPassword(entry.Website, masterPassword)
+	category, _ := DecryptPassword(entry.Category, masterPassword)
+	notes, _ := DecryptPassword(entry.Note, masterPassword)
+	fmt.Println("Email: ", email)
+	fmt.Println("Username: ", username)
+	fmt.Println("password:", password)
+	fmt.Println("website:", website)
+	fmt.Println("category:", category)
+	fmt.Println("notes:", notes)
+
 }
 
 func DeleteEntry(entries []helpers.Entry) []helpers.Entry {
@@ -42,10 +66,9 @@ func DeleteEntry(entries []helpers.Entry) []helpers.Entry {
 func AreYouSure() bool {
 	//ask the user for confirmation, write the code for me
 	resp := helpers.GetStrInput("Are you sure? (y/n): ")
-	if resp == "y" || resp == "Y" || resp == "yes" || resp == "YES" {
+	if resp == "y" || resp == "Y" || resp == "yes" || resp == "YES" || resp == "1" {
 		return true
 	}
 
 	return false
-
 }

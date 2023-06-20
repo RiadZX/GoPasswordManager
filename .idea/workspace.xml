@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc6441c1-1008-49b7-8d37-06090015a66d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/passwords/encryption.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/build.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/build.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/build_and_run.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/build_and_run.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passwords.json" beforeDir="false" afterPath="$PROJECT_DIR$/passwords.json" afterDir="false" />
