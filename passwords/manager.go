@@ -54,7 +54,6 @@ func ViewEntry(entry helpers.Entry, masterPassword string) {
 	fmt.Println("website:", website)
 	fmt.Println("category:", category)
 	fmt.Println("notes:", notes)
-
 }
 
 func DeleteEntry(entries []helpers.Entry) []helpers.Entry {
