@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc6441c1-1008-49b7-8d37-06090015a66d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GoPasswordManager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GoPasswordManager.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/filehandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/filehandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/build_and_run.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/build_and_run.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passwords.json" beforeDir="false" afterPath="$PROJECT_DIR$/passwords.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passwords/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/passwords/manager.go" afterDir="false" />
@@ -64,7 +62,7 @@
       <recent name="C:\Users\riadz\Documents\GitHub\GoPasswordManager\helpers" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.build">
+  <component name="RunManager" selected="Go Build.build and run">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />

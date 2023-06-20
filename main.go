@@ -3,6 +3,7 @@ package main
 import (
 	"GoPasswordManager/helpers"
 	"GoPasswordManager/passwords"
+	"os"
 )
 
 var (
@@ -25,14 +26,26 @@ func main() {
 			helpers.SaveEntry(entry)
 			logger.Log("Added Password Success")
 		case 2:
-			passwords.ViewEntries()
+			err := passwords.ViewEntries()
+			if err != nil {
+				return
+			}
 			entries := passwords.DeleteEntry(helpers.LoadEntries("./passwords.json"))
-			helpers.SaveEntries(entries)
+			if passwords.AreYouSure() {
+				helpers.SaveEntries(entries)
+			}
+
 		case 3:
-			passwords.ViewEntries()
+			err := passwords.ViewEntries()
+			if err != nil {
+				return
+			}
 			logger.Log("Chosen 3")
 		case 4:
 			logger.Log("Chosen 4")
+
+		case 5:
+			os.Exit(0)
 		}
 	}
 }
