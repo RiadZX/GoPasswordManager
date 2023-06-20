@@ -15,4 +15,6 @@ Small password manager to learn the go language.
 - Export/Import to different password managers
 
 > WIP 👷🏻‍♂️
- 
+
+todo
+check if password is correct at start, change **masterpassword** option
