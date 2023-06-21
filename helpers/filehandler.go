@@ -50,3 +50,14 @@ func SaveEntries(entries []Entry) {
 
 	saveEntries(entries)
 }
+
+func LoadTXTFile(filename string) string {
+	content, _ := os.ReadFile(filename)
+	return string(content[:])
+}
+
+func SaveTXTFile(filename string, content string) {
+	file, _ := os.OpenFile(filename, os.O_RDWR|os.O_CREATE, 0755)
+	file.WriteString(content)
+	defer file.Close()
+}

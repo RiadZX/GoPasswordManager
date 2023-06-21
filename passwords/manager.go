@@ -48,6 +48,7 @@ func ViewEntry(entry helpers.Entry, masterPassword string) {
 	website, _ := DecryptPassword(entry.Website, masterPassword)
 	category, _ := DecryptPassword(entry.Category, masterPassword)
 	notes, _ := DecryptPassword(entry.Note, masterPassword)
+
 	fmt.Println("Email: ", email)
 	fmt.Println("Username: ", username)
 	fmt.Println("password:", password)
