@@ -31,26 +31,27 @@ func AddEntry(masterPassword string) helpers.Entry {
 
 func ViewEntries(masterPassword string) ([]helpers.Entry, error) {
 	var entries = helpers.LoadEntries("./passwords.json")
+	t := table.NewWriter()
+	t.SetOutputMirror(os.Stdout)
+	t.AppendHeader(table.Row{"#", "Email", "Username", "Password", "Website", "Category", "Note"})
+
 	if len(entries) == 0 {
-		fmt.Println("No entries found")
 		entries := []helpers.Entry{helpers.Entry{}}
 		return entries, errors.New("no entries found")
 	}
 	for i, v := range entries {
-		decryptedemail, _ := DecryptPassword(v.Email, masterPassword)
-		fmt.Println(i, "Entry: ", decryptedemail)
+		email, _ := DecryptPassword(v.Email, masterPassword)
+		username, _ := DecryptPassword(v.Username, masterPassword)
+		password, _ := DecryptPassword(v.Password, masterPassword)
+		website, _ := DecryptPassword(v.Website, masterPassword)
+		category, _ := DecryptPassword(v.Category, masterPassword)
+		notes, _ := DecryptPassword(v.Note, masterPassword)
+		t.AppendRow(table.Row{i, email, username, password, website, category, notes})
 	}
-	t := table.NewWriter()
-	t.SetOutputMirror(os.Stdout)
-	t.AppendHeader(table.Row{"#", "First Name", "Last Name", "Salary"})
-	t.AppendRows([]table.Row{
-		{1, "Arya", "Stark", 3000},
-		{20, "Jon", "Snow", 2000, "You know nothing, Jon Snow!"},
-	})
-	t.AppendSeparator()
-	t.AppendRow([]interface{}{300, "Tyrion", "Lannister", 5000})
-	t.AppendFooter(table.Row{"", "", "Total", 10000})
 
+	t.AppendSeparator()
+
+	t.AppendFooter(table.Row{"", "", "Total Entries", len(entries)})
 	t.SetStyle(table.StyleColoredBlackOnBlueWhite)
 	t.Render()
 	return entries, nil

@@ -17,23 +17,37 @@ var (
 	}
 )
 
-func newEntry(masterPassword *string, logger *helpers.Logger) {
+func newEntry(masterPassword *string) {
 	entry := passwords.AddEntry(*masterPassword)
 	helpers.SaveEntry(entry)
-	logger.Log("Added Password Success")
+	helpers.Log("Added Password Success")
 }
 
 func deleteEntry(masterPassword *string) {
-	passwords.ViewEntries(*masterPassword)
+	entries, err := passwords.ViewEntries(*masterPassword)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	passwords.DeleteEntry(entries)
 
-	entries := passwords.DeleteEntry(helpers.LoadEntries("./passwords.json"))
-	if passwords.AreYouSure() {
+	if passwords.AreYouSure() || err != nil {
 		helpers.SaveEntries(entries)
+	} else {
+		fmt.Println("error found deletenetry")
 	}
 }
 
 func viewEntries(masterPassword *string) {
-	entries, _ := passwords.ViewEntries(*masterPassword)
+	entries, err := passwords.ViewEntries(*masterPassword)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	if len(entries) == 0 {
+		fmt.Println(err)
+		return
+	}
 	entrynum := helpers.GetIntInput()
 	passwords.ViewEntry(entries[entrynum], *masterPassword)
 }
@@ -85,13 +99,13 @@ func authenticateUser() (bool, string) {
 		fmt.Println("INVALID MASTER PASSWORD, PLEASE RETRY")
 		main()
 	}
-	fmt.Println("Valid master password")
+
 	return true, pass
 }
 
 func validateMasterPassword() (bool, string) {
 	filecontent := helpers.LoadTXTFile("./hash.txt")
-	fmt.Println(filecontent)
+
 	if len(filecontent) == 0 {
 		//create new password
 		masterPassword := helpers.GetStrInput("Create new master password:")
@@ -103,9 +117,6 @@ func validateMasterPassword() (bool, string) {
 		masterPassword := helpers.GetStrInput("Enter master password :")
 		decryptedPassword, _ := passwords.DecryptPassword(filecontent, masterPassword)
 
-		fmt.Println("dc", decryptedPassword)
-		fmt.Println("mp", masterPassword)
-
 		if decryptedPassword == "GOPASSWORD" {
 			return true, masterPassword
 		} else {
@@ -116,18 +127,24 @@ func validateMasterPassword() (bool, string) {
 
 }
 
+func printMenu() {
+	logo := helpers.LoadTXTFile("./data/menu.txt")
+	helpers.Log(logo)
+}
+
 func main() {
-	logger := helpers.Logger{Level: 1, Prefix: ""}
+
+	printMenu()
 	authenticated, masterPassword := authenticateUser()
 	if !authenticated {
 		return
 	}
 	for true {
-		logger.LogList(OPTIONS)
+		helpers.LogList(OPTIONS)
 		option := helpers.GetIntInput()
 		switch option {
 		case 1:
-			newEntry(&masterPassword, &logger)
+			newEntry(&masterPassword)
 		case 2:
 			deleteEntry(&masterPassword)
 		case 3:

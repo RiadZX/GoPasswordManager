@@ -37,16 +37,15 @@ func saveEntries(entries []Entry) {
 }
 
 func SaveEntry(entry Entry) {
-	logger := Logger{Level: 1, Prefix: ""}
-	logger.Log("Saved Password")
+
+	Log("Saved Password")
 	var currentEntries []Entry = LoadEntries("./passwords.json")
 	entries := append(currentEntries, entry)
 	saveEntries(entries)
 }
 
 func SaveEntries(entries []Entry) {
-	logger := Logger{Level: 1, Prefix: ""}
-	logger.Log("Saved Password")
+	Log("Saved Password")
 
 	saveEntries(entries)
 }
