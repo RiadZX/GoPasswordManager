@@ -73,6 +73,10 @@ func changeMasterPassword(masterPassword *string) {
 	}
 
 	helpers.SaveEntries(newentries)
+
+	//CHANGE THE HASH.TXT
+	encryptedPassword, _ := passwords.EncryptPassword("GOPASSWORD", newMasterPassword)
+	helpers.SaveTXTFile("./hash.txt", encryptedPassword)
 }
 
 func authenticateUser() (bool, string) {
@@ -97,12 +101,12 @@ func validateMasterPassword() (bool, string) {
 
 	} else {
 		masterPassword := helpers.GetStrInput("Enter master password :")
-		decryptedPassword, err := passwords.DecryptPassword("GOPASSWORD", masterPassword)
-		fmt.Println(err)
-		fmt.Println(decryptedPassword)
-		fmt.Println(masterPassword)
+		decryptedPassword, _ := passwords.DecryptPassword(filecontent, masterPassword)
 
-		if decryptedPassword == masterPassword {
+		fmt.Println("dc", decryptedPassword)
+		fmt.Println("mp", masterPassword)
+
+		if decryptedPassword == "GOPASSWORD" {
 			return true, masterPassword
 		} else {
 			return false, masterPassword

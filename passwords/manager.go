@@ -4,6 +4,8 @@ import (
 	"GoPasswordManager/helpers"
 	"errors"
 	"fmt"
+	"github.com/jedib0t/go-pretty/v6/table"
+	"os"
 )
 
 func AddEntry(masterPassword string) helpers.Entry {
@@ -38,6 +40,19 @@ func ViewEntries(masterPassword string) ([]helpers.Entry, error) {
 		decryptedemail, _ := DecryptPassword(v.Email, masterPassword)
 		fmt.Println(i, "Entry: ", decryptedemail)
 	}
+	t := table.NewWriter()
+	t.SetOutputMirror(os.Stdout)
+	t.AppendHeader(table.Row{"#", "First Name", "Last Name", "Salary"})
+	t.AppendRows([]table.Row{
+		{1, "Arya", "Stark", 3000},
+		{20, "Jon", "Snow", 2000, "You know nothing, Jon Snow!"},
+	})
+	t.AppendSeparator()
+	t.AppendRow([]interface{}{300, "Tyrion", "Lannister", 5000})
+	t.AppendFooter(table.Row{"", "", "Total", 10000})
+
+	t.SetStyle(table.StyleColoredBlackOnBlueWhite)
+	t.Render()
 	return entries, nil
 }
 
