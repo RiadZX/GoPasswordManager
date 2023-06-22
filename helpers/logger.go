@@ -19,6 +19,12 @@ func Warn(message string) {
 	color.Unset()
 }
 
+func Success(message string) {
+	color.Set(color.FgHiGreen)
+	fmt.Println(message)
+	color.Unset()
+}
+
 func Danger(message string) {
 	color.Set(color.FgHiRed)
 	fmt.Println(message)

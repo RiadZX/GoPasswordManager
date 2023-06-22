@@ -20,13 +20,13 @@ var (
 func newEntry(masterPassword *string) {
 	entry := passwords.AddEntry(*masterPassword)
 	helpers.SaveEntry(entry)
-	helpers.Log("Added Password Success")
+	helpers.Success("Added Password Success")
 }
 
 func deleteEntry(masterPassword *string) {
 	entries, err := passwords.ViewEntries(*masterPassword)
 	if err != nil {
-		fmt.Println(err)
+		helpers.Danger(err.Error())
 		return
 	}
 	passwords.DeleteEntry(entries)
@@ -34,7 +34,7 @@ func deleteEntry(masterPassword *string) {
 	if passwords.AreYouSure() || err != nil {
 		helpers.SaveEntries(entries)
 	} else {
-		fmt.Println("error found deletenetry")
+		helpers.Danger("error found deletenetry")
 	}
 }
 
@@ -45,7 +45,7 @@ func viewEntries(masterPassword *string) {
 		return
 	}
 	if len(entries) == 0 {
-		fmt.Println(err)
+		helpers.Danger(err.Error())
 		return
 	}
 	entrynum := helpers.GetIntInput()
@@ -96,7 +96,7 @@ func changeMasterPassword(masterPassword *string) {
 func authenticateUser() (bool, string) {
 	auth, pass := validateMasterPassword()
 	if !auth {
-		fmt.Println("INVALID MASTER PASSWORD, PLEASE RETRY")
+		helpers.Danger("INVALID MASTER PASSWORD, PLEASE RETRY")
 		main()
 	}
 

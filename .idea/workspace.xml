@@ -8,15 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/build.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/build.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/build_and_run.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/build_and_run.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/menu.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/menu.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hash.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/filehandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/filehandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/input.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/input.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/logger.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/passwords.json" beforeDir="false" afterPath="$PROJECT_DIR$/passwords.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passwords/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/passwords/manager.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +42,6 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;DefaultGoTemplateProperty&quot;: &quot;Go Application&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
@@ -70,7 +64,7 @@
       <recent name="C:\Users\riadz\Documents\GitHub\GoPasswordManager\helpers" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.build and run">
+  <component name="RunManager" selected="Go Build.build">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
@@ -120,9 +114,6 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.bat" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
