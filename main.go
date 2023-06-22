@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	OPTIONS []string = []string{
+	OPTIONS = []string{
 		"New Entry",
 		"Delete Entry",
 		"View Entries",
@@ -41,14 +41,14 @@ func deleteEntry(masterPassword *string) {
 func viewEntries(masterPassword *string) {
 	entries, err := passwords.ViewEntries(*masterPassword)
 	if err != nil {
-		fmt.Println(err)
+		helpers.Danger(err.Error())
 		return
 	}
 	if len(entries) == 0 {
 		helpers.Danger(err.Error())
 		return
 	}
-	entrynum := helpers.GetIntInput()
+	entrynum := helpers.GetIntInput("Enter entry index to view")
 	passwords.ViewEntry(entries[entrynum], *masterPassword)
 }
 
@@ -91,6 +91,8 @@ func changeMasterPassword(masterPassword *string) {
 	//CHANGE THE HASH.TXT
 	encryptedPassword, _ := passwords.EncryptPassword("GOPASSWORD", newMasterPassword)
 	helpers.SaveTXTFile("./hash.txt", encryptedPassword)
+
+	*masterPassword = newMasterPassword
 }
 
 func authenticateUser() (bool, string) {
@@ -108,13 +110,13 @@ func validateMasterPassword() (bool, string) {
 
 	if len(filecontent) == 0 {
 		//create new password
-		masterPassword := helpers.GetStrInput("Create new master password:")
+		masterPassword := helpers.GetStrInput("Create new master password")
 		encryptedPassword, _ := passwords.EncryptPassword("GOPASSWORD", masterPassword)
 		helpers.SaveTXTFile("./hash.txt", encryptedPassword)
 		return true, masterPassword
 
 	} else {
-		masterPassword := helpers.GetStrInput("Enter master password :")
+		masterPassword := helpers.GetStrInput("Enter master password")
 		decryptedPassword, _ := passwords.DecryptPassword(filecontent, masterPassword)
 
 		if decryptedPassword == "GOPASSWORD" {
@@ -141,7 +143,7 @@ func main() {
 	}
 	for true {
 		helpers.LogList(OPTIONS)
-		option := helpers.GetIntInput()
+		option := helpers.GetIntInput("Choose an option")
 		switch option {
 		case 1:
 			newEntry(&masterPassword)

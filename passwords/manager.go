@@ -3,7 +3,6 @@ package passwords
 import (
 	"GoPasswordManager/helpers"
 	"errors"
-	"fmt"
 	"github.com/jedib0t/go-pretty/v6/table"
 	"os"
 )
@@ -12,7 +11,7 @@ func AddEntry(masterPassword string) helpers.Entry {
 	println("STARTING ADDING")
 	email, _ := EncryptPassword(helpers.GetStrInput("Email: "), masterPassword)
 	username, _ := EncryptPassword(helpers.GetStrInput("Username: "), masterPassword)
-	password, _ := EncryptPassword(helpers.GetStrInput("Password: "), masterPassword)
+	password, _ := EncryptPassword(helpers.GetPasswordInput(), masterPassword)
 	website, _ := EncryptPassword(helpers.GetStrInput("Website: "), masterPassword)
 	category, _ := EncryptPassword(helpers.GetStrInput("Category: "), masterPassword)
 	notes, _ := EncryptPassword(helpers.GetStrInput("Note: "), masterPassword)
@@ -33,6 +32,7 @@ func ViewEntries(masterPassword string) ([]helpers.Entry, error) {
 	var entries = helpers.LoadEntries("./passwords.json")
 	t := table.NewWriter()
 	t.SetOutputMirror(os.Stdout)
+	t.SetTitle("Entries")
 	t.AppendHeader(table.Row{"#", "Email", "Username", "Password", "Website", "Category", "Note"})
 
 	if len(entries) == 0 {
@@ -52,7 +52,7 @@ func ViewEntries(masterPassword string) ([]helpers.Entry, error) {
 	t.AppendSeparator()
 
 	t.AppendFooter(table.Row{"", "", "Total Entries", len(entries)})
-	t.SetStyle(table.StyleColoredBlackOnBlueWhite)
+	t.SetStyle(table.StyleColoredGreenWhiteOnBlack)
 	t.Render()
 	return entries, nil
 }
@@ -65,17 +65,12 @@ func ViewEntry(entry helpers.Entry, masterPassword string) {
 	category, _ := DecryptPassword(entry.Category, masterPassword)
 	notes, _ := DecryptPassword(entry.Note, masterPassword)
 
-	fmt.Println("Email: ", email)
-	fmt.Println("Username: ", username)
-	fmt.Println("password:", password)
-	fmt.Println("website:", website)
-	fmt.Println("category:", category)
-	fmt.Println("notes:", notes)
+	helpers.LogEntry(email, username, password, website, category, notes)
 }
 
 func DeleteEntry(entries []helpers.Entry) []helpers.Entry {
 	//Remove element at index from entries
-	index := helpers.GetIntInput()
+	index := helpers.GetIntInput("Enter entry index to delete")
 	return append(entries[:index], entries[index+1:]...)
 }
 

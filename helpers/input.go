@@ -5,9 +5,9 @@ import (
 	"github.com/fatih/color"
 )
 
-func GetIntInput() int {
+func GetIntInput(message string) int {
 	color.Set(color.FgHiCyan)
-	fmt.Print(">> ")
+	fmt.Print(">>", message, ": ")
 	color.Unset()
 	var o int
 	// Taking input from user
@@ -17,7 +17,7 @@ func GetIntInput() int {
 
 func GetStrInput(message string) string {
 	color.Set(color.FgHiCyan)
-	fmt.Print(">> ", message)
+	fmt.Print(">>", message, ": ")
 	color.Unset()
 	var o string
 	// Taking input from user
@@ -27,4 +27,17 @@ func GetStrInput(message string) string {
 		return " "
 	}
 	return o
+}
+
+func GetPasswordInput() string {
+	resp := GetStrInput("Do you want to generate a new password? (y/n): ")
+	if resp == "y" || resp == "Y" || resp == "yes" || resp == "YES" || resp == "1" {
+		pw := GeneratePassword()
+		Warn("Password generated:" + pw)
+		return pw
+
+	} else {
+		pw := GetStrInput("Enter new password")
+		return pw
+	}
 }
