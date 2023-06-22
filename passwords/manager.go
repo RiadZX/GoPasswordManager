@@ -52,7 +52,7 @@ func ViewEntries(masterPassword string) ([]helpers.Entry, error) {
 	t.AppendSeparator()
 
 	t.AppendFooter(table.Row{"", "", "Total Entries", len(entries)})
-	t.SetStyle(table.StyleColoredGreenWhiteOnBlack)
+	t.SetStyle(table.StyleRounded)
 	t.Render()
 	return entries, nil
 }
