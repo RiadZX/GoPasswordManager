@@ -4,17 +4,19 @@
 
 Small password manager to learn the go language.
 
+### Current Features
+- Encrypted Entries (encryption isn't safe yet, pretty basic)
+- View, Create, Delete entries
+- Generate passwords
+- Simple Interface
+- Change master password
+
 ### How to use
 > WIP 👷🏻‍♂️
 
 ### Planned
 
-- Encrypted Entries
-- View, Create, Delete etc.
-- Master Password
+- Better encryption
 - Export/Import to different password managers
 
 > WIP 👷🏻‍♂️
-
-todo
-check if password is correct at start, change **masterpassword** option
