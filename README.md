@@ -21,5 +21,9 @@ Small password manager to learn the go language.
 
 > WIP 👷🏻‍♂️
 
+![](https://github.com/RiadZX/GoPasswordManager/blob/main/images/screenshot1.png)
+![](https://github.com/RiadZX/GoPasswordManager/blob/main/images/screenshot2.png)
+
+
 
 
