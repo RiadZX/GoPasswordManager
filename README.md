@@ -20,3 +20,6 @@ Small password manager to learn the go language.
 - Export/Import to different password managers
 
 > WIP 👷🏻‍♂️
+
+
+

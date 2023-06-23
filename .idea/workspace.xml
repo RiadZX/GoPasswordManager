@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc6441c1-1008-49b7-8d37-06090015a66d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/images/screenshot2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshot1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/menu.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/menu.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/settings.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/logger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
       <recent name="C:\Users\riadz\Documents\GitHub\GoPasswordManager\helpers" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.build and run">
+  <component name="RunManager" selected="Go Build.build">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
