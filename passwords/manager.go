@@ -9,12 +9,12 @@ import (
 
 func AddEntry(masterPassword string) helpers.Entry {
 	println("STARTING ADDING")
-	email, _ := EncryptPassword(helpers.GetStrInput("Email: "), masterPassword)
-	username, _ := EncryptPassword(helpers.GetStrInput("Username: "), masterPassword)
+	email, _ := EncryptPassword(helpers.GetStrInput("Email"), masterPassword)
+	username, _ := EncryptPassword(helpers.GetStrInput("Username"), masterPassword)
 	password, _ := EncryptPassword(helpers.GetPasswordInput(), masterPassword)
-	website, _ := EncryptPassword(helpers.GetStrInput("Website: "), masterPassword)
-	category, _ := EncryptPassword(helpers.GetStrInput("Category: "), masterPassword)
-	notes, _ := EncryptPassword(helpers.GetStrInput("Note: "), masterPassword)
+	website, _ := EncryptPassword(helpers.GetStrInput("Website"), masterPassword)
+	category, _ := EncryptPassword(helpers.GetStrInput("Category"), masterPassword)
+	notes, _ := EncryptPassword(helpers.GetStrInput("Note"), masterPassword)
 
 	entry := helpers.Entry{
 		Email:    email,
@@ -68,10 +68,22 @@ func ViewEntry(entry helpers.Entry, masterPassword string) {
 	helpers.LogEntry(email, username, password, website, category, notes)
 }
 
-func DeleteEntry(entries []helpers.Entry) []helpers.Entry {
+func DeleteEntry(entries []helpers.Entry) ([]helpers.Entry, error) {
 	//Remove element at index from entries
 	index := helpers.GetIntInput("Enter entry index to delete")
-	return append(entries[:index], entries[index+1:]...)
+	if index > len(entries)-1 || index < 0 {
+		helpers.Danger("Invalid Input, Entry does not exist")
+		return []helpers.Entry{}, errors.New("Invalid Input")
+	}
+	return append(entries[:index], entries[index+1:]...), nil
+}
+
+func ExportCSV() {
+
+}
+
+func ExportJSON() {
+
 }
 
 func AreYouSure() bool {

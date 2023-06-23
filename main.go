@@ -13,7 +13,13 @@ var (
 		"Delete Entry",
 		"View Entries",
 		"Change master password",
+		"Export Passwords",
 		"Exit",
+	}
+
+	EXPORTOPTIONS = []string{
+		"CSV",
+		"JSON",
 	}
 )
 
@@ -29,7 +35,10 @@ func deleteEntry(masterPassword *string) {
 		helpers.Danger(err.Error())
 		return
 	}
-	passwords.DeleteEntry(entries)
+	_, err2 := passwords.DeleteEntry(entries)
+	if err2 != nil {
+		return
+	}
 
 	if passwords.AreYouSure() || err != nil {
 		helpers.SaveEntries(entries)
@@ -49,6 +58,10 @@ func viewEntries(masterPassword *string) {
 		return
 	}
 	entrynum := helpers.GetIntInput("Enter entry index to view")
+	if entrynum > len(entries)-1 || entrynum < 0 {
+		helpers.Danger("Invalid Input, Entry does not exist")
+		return
+	}
 	passwords.ViewEntry(entries[entrynum], *masterPassword)
 }
 
@@ -129,6 +142,23 @@ func validateMasterPassword() (bool, string) {
 
 }
 
+func exportEntries() {
+
+	helpers.LogList(EXPORTOPTIONS)
+	option := helpers.GetIntInput("Choose an option")
+	switch option {
+	case 1:
+		passwords.ExportCSV()
+		helpers.Success("Export to CSV Success")
+	case 2:
+		passwords.ExportJSON()
+		helpers.Success("Export to JSON Success")
+
+	default:
+		helpers.Danger("Invalid Input, back to main menu")
+	}
+}
+
 func printMenu() {
 	logo := helpers.LoadTXTFile("./data/menu.txt")
 	helpers.Log(logo)
@@ -154,8 +184,11 @@ func main() {
 		case 4:
 			changeMasterPassword(&masterPassword)
 		case 5:
+			exportEntries()
+		case 6:
 			os.Exit(0)
-
+		default:
+			helpers.Danger("Invalid Input")
 		}
 	}
 }
