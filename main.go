@@ -161,7 +161,7 @@ func exportEntries() {
 
 func printMenu() {
 	logo := helpers.LoadTXTFile("./data/menu.txt")
-	helpers.Log(logo)
+	helpers.LogoPrint(logo)
 }
 
 func main() {
