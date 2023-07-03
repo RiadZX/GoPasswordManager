@@ -2,6 +2,7 @@ package helpers
 
 import (
 	"fmt"
+	"github.com/atotto/clipboard"
 	"github.com/fatih/color"
 	"strings"
 )
@@ -66,7 +67,10 @@ func LogEntry(email string, username string, password string, website string, ca
 	fmt.Println("> Website: " + website)
 	fmt.Println("> Category: " + category)
 	fmt.Println("> Notes: " + notes)
-	fmt.Println("-----------------------")
+	//add copy to clipboard
+	clipboard.WriteAll(password)
+	Success("Password copied to clipboard")
+
 	color.Unset()
 
 }
